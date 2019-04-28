@@ -13,6 +13,8 @@ deep from the root of the git repository.
 2. cd <root>/project
 3. run `./gradlew release`
 
+Notice: `Running [git, checkout, gradle.properties] produced an error: [error: pathspec 'gradle.properties' did not match any file(s) known to git.]`
+
 ```
 PS C:\jjkavalam\gradle-release-issue-184\project> .\gradlew release                                                                                      
                                                                                                                                                          
@@ -40,3 +42,8 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
 BUILD FAILED in 10s                                                                                                                                      
 1 actionable task: 1 executed                                                                                                                           
 ```
+
+# Guessing the cause
+
+The `the-good-case` branch of this repository has the same gradle project, but instead of `<root>/project/` it is 
+located at `<root>/`. In this case, there is no complaint about a failed checkout of gradle.properties.
